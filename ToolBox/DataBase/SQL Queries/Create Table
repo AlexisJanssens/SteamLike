@@ -1,0 +1,51 @@
+CREATE TABLE [User] (
+    UserId INT PRIMARY KEY IDENTITY,
+    NickName VARCHAR(255) NOT NULL,
+    Mail VARCHAR(255) NOT NULL ,
+    Password VARCHAR(255) NOT NULL ,
+    Wallet MONEY NOT NULL ,
+    EditorName VARCHAR(255) NULL ,
+    Role INT DEFAULT 0,
+    [Status] INT NOT NULL
+)
+
+CREATE TABLE Game (
+    GameId INT PRIMARY KEY IDENTITY ,
+    Name VARCHAR(255) NOT NULL ,
+    DevId INT FOREIGN KEY REFERENCES [User](UserId) ,
+    Version VARCHAR(255) NOT NULL
+)
+
+CREATE TABLE Friend  (
+    UserAsker INT FOREIGN KEY REFERENCES [User](UserId) NOT NULL,
+    UserReceiver INT FOREIGN KEY REFERENCES [User](UserId) NOT NULL,
+    CreationDate DATETIME NOT NULL ,
+    [Status] INT NOT NULL,
+    CONSTRAINT PK_Friend PRIMARY KEY (UserAsker,UserReceiver)
+)
+
+CREATE TABLE GameList (
+    UserId INT FOREIGN KEY REFERENCES [User](UserId) NOT NULL ,
+    GameId INT FOREIGN KEY REFERENCES Game(GameId) NOT NULL ,
+    BuyingDate DATETIME NOT NULL ,
+    PlayingTime INT default 0,
+    GiftId INT FOREIGN KEY REFERENCES [User](UserId) NULL,
+    [Status] INT NOT NULL
+    CONSTRAINT PK_GameList PRIMARY KEY (UserId, GameId)
+)
+
+CREATE TABLE WhishList (
+    UserId INT REFERENCES [User](UserId),
+    GameId INT REFERENCES Game(GameId),
+    CreationDate DATETIME NOT NULL ,
+    CONSTRAINT PK_WhishList PRIMARY KEY (UserId, GameId)
+)
+
+CREATE TABLE PriceList (
+    PriceId INT PRIMARY KEY IDENTITY ,
+    GameId INT REFERENCES Game(GameId) NOT NULL ,
+    UpdateDate DATETIME NOT NULL,
+    Price FLOAT NOT NULL
+)
+
+
