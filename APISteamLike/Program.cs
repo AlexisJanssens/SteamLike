@@ -1,3 +1,5 @@
+using BLL.Interface;
+using BLL.Services;
 using DAL;
 using DAL.Interfaces;
 using DAL.Repositories;
@@ -14,6 +16,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserRepository, IUserRepository>(x =>
     new UserRepository(builder.Configuration.GetConnectionString("SteamLikeDb")));
+builder.Services.AddScoped<IUserService, UserService >();
 
 var app = builder.Build();
 

@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Interfaces;
+using DAL.Mappers;
 using Microsoft.Data.SqlClient;
 using ToolBox.DataBase;
 using ToolBox.Services;
@@ -14,12 +15,23 @@ public class PriceRepository : Repository, IPriceRepository
 
     public IEnumerable<Price> GetAll()
     {
-        throw new NotImplementedException();
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.CommandText = "SELECT * FROM [Price]";
+
+            return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToPrice(x));
+        }
     }
 
     public Price? Get(int id)
     {
-        throw new NotImplementedException();
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.CommandText = "SELECT * FROM [Price] WHERE PriceId = @id";
+            cmd.Parameters.AddWithValue("PriceId", id);
+
+            return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToPrice(x)).SingleOrDefault();
+        }
     }
 
     public Price? Create(Price entity)

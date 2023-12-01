@@ -65,14 +65,4 @@ public static class DbMapper
             PriceValue = Convert.ToDouble(reader["Price"])
         };
     }
-
-    public static GameOfWhishList ToGameOfWhishList(this SqlDataReader reader)
-    {
-        return new GameOfWhishList()
-        {
-            UserId = (int)reader["UserId"],
-            GameId = (int)reader["GameId"],
-            CreationDate = Convert.ToDateTime(reader["CreationDate"])
-        };
-    }
 }
