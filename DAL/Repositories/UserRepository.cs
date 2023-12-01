@@ -17,7 +17,7 @@ public class UserRepository : Repository, IUserRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "SELECT * FROM User";
+            cmd.CommandText = "SELECT * FROM [User]";
 
             return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToUser(x));
         }
@@ -27,7 +27,7 @@ public class UserRepository : Repository, IUserRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "SELECT * FROM User WHERE UserId = @id";
+            cmd.CommandText = "SELECT * FROM [User] WHERE UserId = @id";
             cmd.Parameters.AddWithValue("id", id);
 
             return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToUser(x)).SingleOrDefault();
@@ -38,7 +38,7 @@ public class UserRepository : Repository, IUserRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "INSERT INTO User OUTPUT inserted.UserId VALUES(" +
+            cmd.CommandText = "INSERT INTO [User] OUTPUT inserted.UserId VALUES(" +
                               "@NickName, @Mail, @Password, @Wallet, @EditorName, @Role, @Status" +
                               ")";
             cmd.Parameters.AddWithValue("NickName", entity.NickName);
@@ -58,14 +58,14 @@ public class UserRepository : Repository, IUserRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "UPDATE User " +
-                              "SET @NickName = Nickname, " +
-                              "@Mail = Mail, " +
-                              "@Password = Password, " +
-                              "@Wallet = Wallet, " +
-                              "@EditorName = EditorName, " +
-                              "@Role = Role, " +
-                              "@Status = Status " +
+            cmd.CommandText = "UPDATE [User] " +
+                              "SET NickName = @NickName, " +
+                              "Mail = @Mail, " +
+                              "Password = @Password, " +
+                              "Wallet = @Wallet, " +
+                              "EditorName = @EditorName, " +
+                              "Role = @Role, " +
+                              "Status = @Status " +
                               "WHERE UserId = @id";
             cmd.Parameters.AddWithValue("NickName", entity.NickName);
             cmd.Parameters.AddWithValue("Mail", entity.Email);
@@ -84,7 +84,7 @@ public class UserRepository : Repository, IUserRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "DELETE FROM User " +
+            cmd.CommandText = "DELETE FROM [User] " +
                               "WHERE UserId = @Id";
             cmd.Parameters.AddWithValue("Id", entity.UserId);
 
