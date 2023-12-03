@@ -17,12 +17,19 @@ public class UserService : IUserService
     
     public IEnumerable<UserDTO> GetAll()
     {
-        throw new NotImplementedException();
+        return _userRepository.GetAll().Select(x => x.ToUserDTO());
     }
 
-    public UserDTO Get(int id)
+    public UserDTO? Get(int id)
     {
-        throw new NotImplementedException();
+        User? user = _userRepository.Get(id);
+        return user?.ToUserDTO();
+    }
+
+    public bool MailAlreadyExist(string mail)
+    {
+        User? userToCheck = _userRepository.GetByMail(mail);
+        return userToCheck != null;
     }
 
     public UserDTO Create(UserForm form)
@@ -30,13 +37,13 @@ public class UserService : IUserService
        return _userRepository.Create(form.ToUser()).ToUserDTO();
     }
 
-    public bool Update(User user)
+    public bool Update(UpdateUserForm form)
     {
-        throw new NotImplementedException();
+        return _userRepository.Update(form.ToUser());
     }
 
-    public bool Delete(User user)
+    public bool Delete(int id)
     {
-        throw new NotImplementedException();
+        return _userRepository.Delete(id);
     }
 }

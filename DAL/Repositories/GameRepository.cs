@@ -68,7 +68,7 @@ public class GameRepository : Repository, IGameRepository
         }
     }
 
-    public bool Delete(Game entity)
+    public bool Delete(int id)
     {
         throw new NotImplementedException();
     }

@@ -6,7 +6,7 @@ public interface IRepository<TKey, TEntity>
     TEntity? Get(TKey id);
     TEntity? Create(TEntity entity);
     bool Update(TEntity entity);
-    bool Delete(TEntity entity);
+    bool Delete(TKey id);
 }
 
     

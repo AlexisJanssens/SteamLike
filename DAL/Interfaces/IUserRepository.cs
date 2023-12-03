@@ -5,5 +5,5 @@ namespace DAL.Interfaces;
 
 public interface IUserRepository : IRepository<int, User>
 {
-    
+    User? GetByMail(string mail);
 }

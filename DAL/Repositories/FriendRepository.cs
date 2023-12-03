@@ -38,7 +38,7 @@ public class FriendRepository : Repository, IFriendRepository
         throw new NotImplementedException();
     }
 
-    public Friend? Get(User user1, User user2)
+    public Friend? GetFriendship(User user1, User user2)
     {
         using (SqlCommand cmd = new SqlCommand())
         {
@@ -52,7 +52,7 @@ public class FriendRepository : Repository, IFriendRepository
         }
     }
 
-    public Friend? Create(Friend entity)
+    public Friend Create(Friend entity)
     {
         using (SqlCommand cmd = new SqlCommand())
         {
@@ -85,7 +85,7 @@ public class FriendRepository : Repository, IFriendRepository
         }
     }
 
-    public bool Delete(Friend entity)
+    public bool Delete(int id)
     {
         throw new NotImplementedException();
     }

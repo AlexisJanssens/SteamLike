@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserRepository, IUserRepository>(x =>
-    new UserRepository(builder.Configuration.GetConnectionString("SteamLikeDb")));
+    new UserRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDb")));
 builder.Services.AddScoped<IUserService, UserService >();
 
 var app = builder.Build();

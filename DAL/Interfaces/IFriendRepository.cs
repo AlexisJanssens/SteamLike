@@ -6,4 +6,5 @@ namespace DAL.Interfaces;
 public interface IFriendRepository : IRepository<int, Friend>
 {
  IEnumerable<Friend> GetAll(User user);
+ Friend? GetFriendship(User user1, User user2);
 }

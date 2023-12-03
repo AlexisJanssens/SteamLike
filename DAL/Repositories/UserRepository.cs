@@ -34,6 +34,17 @@ public class UserRepository : Repository, IUserRepository
         }
     }
 
+    public User? GetByMail(string mail)
+    {
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.CommandText = "SELECT * FROM [User] WHERE Mail = @mail";
+            cmd.Parameters.AddWithValue("Mail", mail);
+
+            return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToUser(x)).SingleOrDefault();
+        }
+    }
+
     public User? Create(User entity)
     {
         using (SqlCommand cmd = new SqlCommand())
@@ -45,7 +56,7 @@ public class UserRepository : Repository, IUserRepository
             cmd.Parameters.AddWithValue("Mail", entity.Email);
             cmd.Parameters.AddWithValue("Password", entity.Password);
             cmd.Parameters.AddWithValue("Wallet", entity.Wallet);
-            cmd.Parameters.AddWithValue("EditorName", entity.EditorName);
+            cmd.Parameters.AddWithValue("EditorName", (object)entity.EditorName ?? DBNull.Value);
             cmd.Parameters.AddWithValue("Role", entity.Role);
             cmd.Parameters.AddWithValue("Status", entity.Status);
 
@@ -80,13 +91,13 @@ public class UserRepository : Repository, IUserRepository
         }
     }
 
-    public bool Delete(User entity)
+    public bool Delete(int id)
     {
         using (SqlCommand cmd = new SqlCommand())
         {
             cmd.CommandText = "DELETE FROM [User] " +
                               "WHERE UserId = @Id";
-            cmd.Parameters.AddWithValue("Id", entity.UserId);
+            cmd.Parameters.AddWithValue("Id", id);
 
             return DBCommands.CustomNonQuery(cmd, ConnectionString) == 1;
         }

@@ -56,7 +56,7 @@ public class PriceRepository : Repository, IPriceRepository
         throw new NotImplementedException();
     }
 
-    public bool Delete(Price entity)
+    public bool Delete(int id)
     {
         throw new NotImplementedException();
     }
