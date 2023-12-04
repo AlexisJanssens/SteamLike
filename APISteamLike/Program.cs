@@ -1,8 +1,11 @@
+using System.Text;
 using BLL.Interface;
 using BLL.Services;
 using DAL;
 using DAL.Interfaces;
 using DAL.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using ToolBox.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +17,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUserRepository, IUserRepository>(x =>
-    new UserRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDb")));
-builder.Services.AddScoped<IUserService, UserService >();
+builder.Services.AddScoped<IUserRepository, UserRepository>(x =>
+    new UserRepository(builder.Configuration.GetConnectionString("SteamLikeDb")));
+builder.Services.AddScoped<IFriendRepository, FriendRepository>(x =>
+    new FriendRepository(builder.Configuration.GetConnectionString("SteamLikeDB")));
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IFriendService, FriendService>();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddScoped<IJwtService, JwtService>(x => new JwtService(builder.Configuration["JWT:SecretKey"], builder.Configuration["JWT:ExpirationDays"]));
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
+{
+    o.SaveToken = true;
+    o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
+    };
+});
 
 var app = builder.Build();
 
@@ -29,6 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

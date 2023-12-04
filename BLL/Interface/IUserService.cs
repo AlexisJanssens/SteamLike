@@ -7,8 +7,9 @@ public interface IUserService
 {
     IEnumerable<UserDTO> GetAll();
     UserDTO? Get(int id);
-    UserDTO Create(UserForm form);
+    UserDTO? Create(UserForm form);
     bool Update(UpdateUserForm form);
     bool Delete(int id);
     bool MailAlreadyExist(string mail);
+    User? GetByMail(string mail);
 }

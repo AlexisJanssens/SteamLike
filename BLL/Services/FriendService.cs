@@ -1,4 +1,6 @@
 ﻿using BLL.Interface;
+using BLL.Mappers;
+using BLL.Models;
 using DAL.Entities;
 using DAL.Interfaces;
 
@@ -30,7 +32,7 @@ public class FriendService : IFriendService
             return false;
         }
 
-        Friend friendship = new Friend()
+        Friend friendship = new Friend
         {
             UserAskerId = askerId,
             UserReceiverId = receiverId,
@@ -41,5 +43,48 @@ public class FriendService : IFriendService
         _friendRepository.Create(friendship);
 
         return true;
+    }
+
+    public bool AcceptFriendRequest(int askerId, int receiverId)
+    {
+        User? askerUser = _userRepository.Get(askerId);
+        User? receiverUser = _userRepository.Get(receiverId);
+        
+        if (askerUser == null || receiverUser == null)
+        {
+            return false;
+        }
+        
+        Friend? friendship = _friendRepository.GetFriendship(askerUser, receiverUser);
+        friendship!.Status = 2;
+        
+        return _friendRepository.Update(friendship);
+    }
+
+    public bool DeleteFriendship(int user1, int user2)
+    {
+        User? askerUser = _userRepository.Get(user1);
+        User? receiverUser = _userRepository.Get(user2);
+        
+        if (askerUser == null || receiverUser == null)
+        {
+            return false;
+        }
+
+        return _friendRepository.Delete(user1, user2);
+    }
+
+    public IEnumerable<FriendDTO> GetAllFriends(int id)
+    {
+        User? user = _userRepository.Get(id);
+
+        if (user == null)
+        {
+            return new List<FriendDTO>();
+        }
+        
+        _friendRepository.GetAll(user);
+
+        return _friendRepository.GetAll(user).Select(x => x.ToFriendDTO());
     }
 }

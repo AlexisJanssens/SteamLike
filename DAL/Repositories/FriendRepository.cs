@@ -13,18 +13,20 @@ public class FriendRepository : Repository, IFriendRepository
     {
     }
 
-    public IEnumerable<Friend> GetAll(User user)
+    public IEnumerable<FriendOfFriendList> GetAll(User user)
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "SELECT * FROM Friend " +
-                              "WHERE UserAsker = @userId " +
+            cmd.CommandText = "SELECT UserAsker as UserId, [user].nickname, creationDate, friend.status FROM Friend " +
+                              "JOIN [user] ON Friend.UserAsker = [user].UserId " +
+                              "WHERE UserReceiver = @userId " +
                               "UNION " +
-                              "SELECT * FROM Friend " +
-                              "WHERE UserReceiver = @userId";
+                              "SELECT UserReceiver, [user].nickname, creationDate, friend.status FROM Friend " +
+                              "JOIN [user] ON Friend.UserAsker = [user].UserId " +
+                              "WHERE UserAsker = @userId";
             cmd.Parameters.AddWithValue("userId", user.UserId);
 
-            return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToFriend(x));
+            return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToFriendOfFriendList(x));
         }
     }
 
@@ -42,11 +44,11 @@ public class FriendRepository : Repository, IFriendRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "GET * FROM Friend " +
+            cmd.CommandText = "SELECT * FROM Friend " +
                               "WHERE UserAsker IN (@UserAskerId, @UserReceiverId) " +
                               "AND UserReceiver IN (@UserAskerId, @UserReceiverId)";
             cmd.Parameters.AddWithValue("UserAskerId", user1.UserId);
-            cmd.Parameters.AddWithValue("UserReceiver", user2.UserId);
+            cmd.Parameters.AddWithValue("UserReceiverId", user2.UserId);
 
             return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToFriend(x)).SingleOrDefault();
         }
@@ -74,11 +76,12 @@ public class FriendRepository : Repository, IFriendRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "UPDATE Friend " +
+            cmd.CommandText = "UPDATE Friend Set " +
                               "Status = @Status " +
                               "WHERE UserAsker = @UserAsker AND UserReceiver = @UserReceiver";
             cmd.Parameters.AddWithValue("UserAsker", entity.UserAskerId);
             cmd.Parameters.AddWithValue("UserReceiver", entity.UserReceiverId);
+            cmd.Parameters.AddWithValue("Status", entity.Status);
 
             return DBCommands.CustomNonQuery(cmd, ConnectionString) == 1;
 
@@ -88,6 +91,20 @@ public class FriendRepository : Repository, IFriendRepository
     public bool Delete(int id)
     {
         throw new NotImplementedException();
+    }
+
+    public bool Delete(int id1, int id2)
+    {
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.CommandText = "DELETE FROM Friend " +
+                              "WHERE UserAsker IN (@id1, @id2) " +
+                              "AND UserReceiver IN (@id1, @id2)";
+            cmd.Parameters.AddWithValue("id1", id1);
+            cmd.Parameters.AddWithValue("id2", id2);
+
+            return DBCommands.CustomNonQuery(cmd, ConnectionString) == 1;
+        }
     }
 }
 

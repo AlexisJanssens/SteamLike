@@ -9,10 +9,12 @@ namespace SteamLike.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IJwtService _jwtService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IJwtService jwtService)
         {
             _userService = userService;
+            _jwtService = jwtService;
         }
         
         
@@ -36,16 +38,12 @@ namespace SteamLike.Controllers
         [HttpPost]
         public ActionResult<UserDTO> Post(UserForm form)
         {
-            if (_userService.MailAlreadyExist(form.Mail))
-            {
-                return BadRequest("mail already exist");
-            }
-            UserDTO userDto = _userService.Create(form);
-            return Ok(userDto);
+            UserDTO? userDto = _userService.Create(form);
+            return userDto == null ? BadRequest() : Ok(userDto);
         }
 
         // PUT: api/User/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public ActionResult<bool> Update(UpdateUserForm form)
         {
             return _userService.Update(form) ? Ok() : BadRequest();

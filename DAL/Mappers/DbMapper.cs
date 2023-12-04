@@ -30,6 +30,17 @@ public static class DbMapper
             Status = (int)reader["Status"]
         };
     }
+    
+    public static FriendOfFriendList ToFriendOfFriendList(this SqlDataReader reader)
+    {
+        return new FriendOfFriendList()
+        {
+            UserAskerId = (int)reader["UserId"],
+            NickName = reader["NickName"].ToString(),
+            CreationDate = Convert.ToDateTime(reader["CreationDate"]),
+            Status = (int)reader["Status"]
+        };
+    }
 
     public static Game ToGame(this SqlDataReader reader)
     {

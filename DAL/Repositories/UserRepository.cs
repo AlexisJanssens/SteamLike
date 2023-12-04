@@ -45,13 +45,19 @@ public class UserRepository : Repository, IUserRepository
         }
     }
 
-    public User? Create(User entity)
+    public User Create(User entity)
     {
         using (SqlCommand cmd = new SqlCommand())
         {
             cmd.CommandText = "INSERT INTO [User] OUTPUT inserted.UserId VALUES(" +
-                              "@NickName, @Mail, @Password, @Wallet, @EditorName, @Role, @Status" +
-                              ")";
+                              " @Password, " +
+                              " @Wallet, " +
+                              " @EditorName, " +
+                              " @Role, " +
+                              " @Status, " +
+                              " @Mail ," +
+                              " @NickName ) ";
+                              
             cmd.Parameters.AddWithValue("NickName", entity.NickName);
             cmd.Parameters.AddWithValue("Mail", entity.Email);
             cmd.Parameters.AddWithValue("Password", entity.Password);

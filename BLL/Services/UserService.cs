@@ -32,9 +32,24 @@ public class UserService : IUserService
         return userToCheck != null;
     }
 
-    public UserDTO Create(UserForm form)
+    public User? GetByMail(string mail)
     {
-       return _userRepository.Create(form.ToUser()).ToUserDTO();
+        User? user = _userRepository.GetByMail(mail);
+        return user;
+    }
+
+    public UserDTO? Create(UserForm form)
+    {
+        if (MailAlreadyExist(form.Mail))
+        {
+            return null;
+        }
+
+        form.Password = BCrypt.Net.BCrypt.HashPassword(form.Password);
+
+        UserDTO userDto = _userRepository.Create(form.ToUser()).ToUserDTO();
+
+        return userDto;
     }
 
     public bool Update(UpdateUserForm form)

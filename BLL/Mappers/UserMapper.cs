@@ -5,7 +5,7 @@ namespace BLL.Mappers;
 
 public static class UserMapper
 {
-    public static UserDTO ToUserDTO(this User user)
+    public static UserDTO ToUserDTO(this User? user)
     {
         
         
