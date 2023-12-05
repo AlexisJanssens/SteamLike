@@ -1,5 +1,6 @@
 using BLL.Interface;
 using BLL.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SteamLike.Controllers
@@ -36,6 +37,7 @@ namespace SteamLike.Controllers
 
         // POST: api/User
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult<UserDTO> Post(UserForm form)
         {
             UserDTO? userDto = _userService.Create(form);

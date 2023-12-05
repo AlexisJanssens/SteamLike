@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Models;
 using DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +25,13 @@ namespace SteamLike.Controllers
         }
         
         // GET: api/Friend
-        [HttpGet("{id}")]
-        public ActionResult<IEnumerable<FriendDTO>> GetAllFriend (int id)
+        [Authorize(Roles = "1")]
+        
+        [HttpGet("/GetFriends")]
+        public ActionResult<IEnumerable<FriendDTO>> GetAllFriend ()
         {
+            var claim = User.Claims.Single(x => x.Type == ClaimTypes.NameIdentifier);
+            int id = Convert.ToInt32(claim.Value);
             return Ok(_friendService.GetAllFriends(id));
         }
 
