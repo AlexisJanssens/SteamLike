@@ -19,11 +19,11 @@ public class FriendRepository : Repository, IFriendRepository
         {
             cmd.CommandText = "SELECT UserAsker as UserId, [user].nickname, creationDate, friend.status FROM Friend " +
                               "JOIN [user] ON Friend.UserAsker = [user].UserId " +
-                              "WHERE UserReceiver = @userId " +
+                              "WHERE UserReceiver = @userId AND (Friend.Status = 2) " +
                               "UNION " +
                               "SELECT UserReceiver, [user].nickname, creationDate, friend.status FROM Friend " +
-                              "JOIN [user] ON Friend.UserAsker = [user].UserId " +
-                              "WHERE UserAsker = @userId";
+                              "JOIN [user] ON Friend.UserReceiver = [user].UserId " +
+                              "WHERE UserAsker = @userId AND (Friend.Status = 2)";
             cmd.Parameters.AddWithValue("userId", user.UserId);
 
             return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToFriendOfFriendList(x));
