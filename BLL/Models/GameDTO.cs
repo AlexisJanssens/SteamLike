@@ -1,10 +1,8 @@
 ﻿namespace BLL.Models;
 
-public class GameForm
+public class GameDTO
 {
+    public int GameId { get; set; }
     public string Name { get; set; }
-    public int DevId { get; set; }
     public string Version { get; set; }
-    
-    public double Price { get; set; }
 }

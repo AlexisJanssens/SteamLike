@@ -21,8 +21,15 @@ builder.Services.AddScoped<IUserRepository, UserRepository>(x =>
     new UserRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDb")));
 builder.Services.AddScoped<IFriendRepository, FriendRepository>(x =>
     new FriendRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDB")));
+builder.Services.AddScoped<IGameRepository, GameRepository>(x=>
+    new GameRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDB")));
+builder.Services.AddScoped<IPriceRepository, PriceRepository>(x=>
+    new PriceRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDB")));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IFriendService, FriendService>();
+
+
+builder.Services.AddScoped<IGameService, GameService>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 

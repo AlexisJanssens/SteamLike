@@ -14,7 +14,7 @@ public static class DbMapper
             Email = reader["mail"].ToString(),
             Password = reader["Password"].ToString(),
             Wallet = Convert.ToDouble(reader["Wallet"]),
-            EditorName = reader["Wallet"] == DBNull.Value ? null : reader["Wallet"].ToString(),
+            EditorName = reader["EditorName"] == DBNull.Value ? null : reader["EditorName"].ToString(),
             Role = (int)reader["Role"],
             Status = (int)reader["Status"]
         };

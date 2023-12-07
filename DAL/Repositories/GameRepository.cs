@@ -34,7 +34,7 @@ public class GameRepository : Repository, IGameRepository
         }
     }
 
-    public Game? Create(Game entity)
+    public Game Create(Game entity)
     {
         using (SqlCommand cmd = new SqlCommand())
         {
@@ -71,5 +71,36 @@ public class GameRepository : Repository, IGameRepository
     public bool Delete(int id)
     {
         throw new NotImplementedException();
+    }
+
+    public bool BuyGame(GameOfGameList game)
+    {
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.CommandText = "INSERT INTO GameList VALUES (" +
+                              "@UserID ,@GameId, @BuyingDate, @PlayingTime, @GiftId, @Status" +
+                              ")";
+            cmd.Parameters.AddWithValue("UserId", game.UserId);
+            cmd.Parameters.AddWithValue("GameId", game.GameId);
+            cmd.Parameters.AddWithValue("BuyingDate", game.Date);
+            cmd.Parameters.AddWithValue("PlayingTime", game.PlayinTime);
+            cmd.Parameters.AddWithValue("GiftId", (object)game.GiftId ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("Status", game.Status);
+
+           return DBCommands.CustomNonQuery(cmd, ConnectionString) == 1;
+        }
+    }
+
+    public GameOfGameList? GetById(int gameId, int userId)
+    {
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.CommandText = "SELECT * FROM GameList WHERE GameId = @gameId AND UserId = @userId";
+            cmd.Parameters.AddWithValue("gameId", gameId);
+            cmd.Parameters.AddWithValue("userId", userId);
+
+            return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToGameOfGameList(x)).SingleOrDefault();
+
+        }
     }
 }

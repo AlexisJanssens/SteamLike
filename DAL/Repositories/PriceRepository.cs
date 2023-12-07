@@ -17,7 +17,7 @@ public class PriceRepository : Repository, IPriceRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "SELECT * FROM [Price]";
+            cmd.CommandText = "SELECT * FROM [PriceList]";
 
             return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToPrice(x));
         }
@@ -27,8 +27,8 @@ public class PriceRepository : Repository, IPriceRepository
     {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "SELECT * FROM [Price] WHERE PriceId = @id";
-            cmd.Parameters.AddWithValue("PriceId", id);
+            cmd.CommandText = "SELECT TOP 1 * FROM [PriceList] WHERE GameId = @id ORDER BY UpdateDate";
+            cmd.Parameters.AddWithValue("id", id);
 
             return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToPrice(x)).SingleOrDefault();
         }

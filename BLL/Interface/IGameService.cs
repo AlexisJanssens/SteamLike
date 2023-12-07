@@ -5,6 +5,11 @@ namespace BLL.Interface;
 
 public interface IGameService
 {
-    Game CreateGame(GameForm form);
-    
+    GameDTO? CreateGame(GameForm form);
+    IEnumerable<GameDTO> GetAll();
+    Game? GetById(int gameId);
+    BuyingRecapDTO? BuyingGame(int gameId, int userId);
+
+
+
 }
