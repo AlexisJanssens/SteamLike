@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "E4xcewYSTz2So/T+oVJ1Mb0OP1kuQa/juB4xO5ApryimKb+FeECLEzQGCqfxLHESIWDKY5VWoOiMhjFVU0fYuQ==",
+  "dgSpecHash": "PGqeeiblu938S0De8mixe7OEx4SjYxUjHPpZOhkOL7NP31DtukXQnqb1LovEGcuzOC8iWY+O26MsD4M/tn7C/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\APISteamLike\\APISteamLike.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexi\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\azure.identity\\1.8.0\\azure.identity.1.8.0.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\fluentscheduler\\5.5.1\\fluentscheduler.5.5.1.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

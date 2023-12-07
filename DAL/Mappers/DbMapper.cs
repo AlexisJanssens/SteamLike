@@ -61,7 +61,7 @@ public static class DbMapper
             GameId = (int)reader["GameId"],
             Date = Convert.ToDateTime(reader["BuyingDate"]),
             PlayinTime = (int)reader["PlayingTime"],
-            GiftId = (int)reader["GiftId"],
+            GiftId = reader["GiftId"] == DBNull.Value ? null : (int)reader["GiftId"],
             Status = (int)reader["Status"]
         };
     }
@@ -74,6 +74,26 @@ public static class DbMapper
             GameId = (int)reader["GameId"],
             UpdateDate = Convert.ToDateTime(reader["UpdateDate"]),
             PriceValue = Convert.ToDouble(reader["Price"])
+        };
+    }
+
+    public static GameOfLibrary ToGameOfLibrary(this SqlDataReader reader)
+    {
+        return new GameOfLibrary()
+        {
+            GameName = reader["Name"].ToString(),
+            GameId = (int)reader["GameId"],
+            Status = (int)reader["Status"]
+        };
+    }
+
+    public static SoldGame ToSoldGame(this SqlDataReader reader)
+    {
+        return new SoldGame()
+        {
+            BuyingDate = Convert.ToDateTime(reader["BuyingDate"]),
+            BuyingPrice = Convert.ToDouble(reader["BuyingPrice"]),
+            Name = reader["Name"].ToString()
         };
     }
 }

@@ -25,10 +25,16 @@ public class PriceRepository : Repository, IPriceRepository
 
     public Price? Get(int id)
     {
+        throw new NotImplementedException();
+    }
+
+    public Price? Get(int gameId, DateTime date)
+    {
         using (SqlCommand cmd = new SqlCommand())
         {
-            cmd.CommandText = "SELECT TOP 1 * FROM [PriceList] WHERE GameId = @id ORDER BY UpdateDate";
-            cmd.Parameters.AddWithValue("id", id);
+            cmd.CommandText = "SELECT TOP 1 * FROM [PriceList] WHERE GameId = @id AND UpdateDate < @date ORDER BY UpdateDate DESC ";
+            cmd.Parameters.AddWithValue("id", gameId);
+            cmd.Parameters.AddWithValue("date", date);
 
             return DBCommands.CustomReader(cmd, ConnectionString, x => DbMapper.ToPrice(x)).SingleOrDefault();
         }

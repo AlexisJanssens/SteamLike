@@ -12,4 +12,5 @@ public interface IUserService
     bool Delete(int id);
     bool MailAlreadyExist(string mail);
     User? GetByMail(string mail);
+    bool UpdateWallet(double amount, int userId);
 }

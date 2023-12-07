@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using BLL.Interface;
 using BLL.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -56,6 +57,16 @@ namespace SteamLike.Controllers
         public ActionResult<bool> Delete(int id)
         {
             return _userService.Delete(id) ? Ok("User deleted") : BadRequest();
+        }
+        
+        // PATCH: api/UpdateWallet
+        [HttpPatch("{amount}")]
+        public ActionResult<bool> UpdateWallet(double amount)
+        {
+            var claim = User.Claims.Single(x => x.Type == ClaimTypes.NameIdentifier);
+            int userId = Convert.ToInt32(claim.Value);
+
+            return _userService.UpdateWallet(amount, userId) ? Ok("Wallet Updated") : BadRequest();
         }
     }
 }

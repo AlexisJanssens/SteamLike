@@ -59,6 +59,19 @@
           }
         }
       },
+      "FluentScheduler/5.5.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/FluentScheduler.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentScheduler.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer/2.14.1": {
         "type": "package",
         "dependencies": {
@@ -3955,6 +3968,7 @@
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "DAL": "1.0.0",
+          "FluentScheduler": "5.5.1",
           "Microsoft.AspNetCore.Authentication.Core": "2.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.0"
         },
@@ -4061,6 +4075,22 @@
         "lib/netstandard2.1/BCrypt.Net-Next.dll",
         "lib/netstandard2.1/BCrypt.Net-Next.xml",
         "readme.md"
+      ]
+    },
+    "FluentScheduler/5.5.1": {
+      "sha512": "OwehD7vZ1CFAboLPrfBTibz/FeKg8DK1h242u0Y050dbfcOlb+d4S/iGBNt/yHaHIhCsmPiQqQjG13e441xWLA==",
+      "type": "package",
+      "path": "fluentscheduler/5.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentscheduler.5.5.1.nupkg.sha512",
+        "fluentscheduler.nuspec",
+        "lib/netstandard2.0/FluentScheduler.dll",
+        "lib/netstandard2.0/FluentScheduler.xml",
+        "lib/netstandard2.1/FluentScheduler.dll",
+        "lib/netstandard2.1/FluentScheduler.xml",
+        "logo-200x200.png"
       ]
     },
     "Humanizer/2.14.1": {

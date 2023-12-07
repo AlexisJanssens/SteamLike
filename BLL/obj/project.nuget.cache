@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kbXZKPGTdRPFESCij2Tb+08qrQBeLz0snOMcx0HHhPKighVQ11cXkOjZCoAS22zMAH+znS/IdQsIHbjDckuvhg==",
+  "dgSpecHash": "Xed3KmJptbuj9imOunH1hk0Sf1LvASa5uuqo1fzexAcqYZUKGcJsA8TWzKEr8JQ12CxPlB3TLciRfVmBRUJtrw==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexi\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\azure.identity\\1.8.0\\azure.identity.1.8.0.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\alexi\\.nuget\\packages\\fluentscheduler\\5.5.1\\fluentscheduler.5.5.1.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",

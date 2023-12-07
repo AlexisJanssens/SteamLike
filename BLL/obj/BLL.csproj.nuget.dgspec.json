@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "FluentScheduler": {
+              "target": "Package",
+              "version": "[5.5.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.Core": {
               "target": "Package",
               "version": "[2.2.0, )"

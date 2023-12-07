@@ -38,6 +38,14 @@ public class UserService : IUserService
         return user;
     }
 
+    public bool UpdateWallet(double amount, int userId)
+    {
+        double actualWallet = _userRepository.Get(userId)!.Wallet;
+        double newWallet = actualWallet + amount; 
+        
+        return _userRepository.UpdateWallet(newWallet, userId);
+    }
+
     public UserDTO? Create(UserForm form)
     {
         if (MailAlreadyExist(form.Mail))

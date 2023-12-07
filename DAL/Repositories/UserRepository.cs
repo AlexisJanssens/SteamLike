@@ -45,6 +45,20 @@ public class UserRepository : Repository, IUserRepository
         }
     }
 
+    public bool UpdateWallet(double amount, int userId)
+    {
+        using (SqlCommand command = new SqlCommand())
+        {
+            command.CommandText = "UPDATE [User] SET " +
+                                  "Wallet = @amount " +
+                                  "WHERE UserId = @userId ";
+            command.Parameters.AddWithValue("amount", amount);
+            command.Parameters.AddWithValue("UserId", userId);
+
+            return DBCommands.CustomNonQuery(command, ConnectionString) == 1;
+        }
+    }
+
     public User Create(User entity)
     {
         using (SqlCommand cmd = new SqlCommand())
@@ -88,7 +102,7 @@ public class UserRepository : Repository, IUserRepository
             cmd.Parameters.AddWithValue("Mail", entity.Email);
             cmd.Parameters.AddWithValue("Password", entity.Password);
             cmd.Parameters.AddWithValue("Wallet", entity.Wallet);
-            cmd.Parameters.AddWithValue("EditorName", entity.EditorName);
+            cmd.Parameters.AddWithValue("EditorName", (object)entity.EditorName ?? DBNull.Value);
             cmd.Parameters.AddWithValue("Role", entity.Role);
             cmd.Parameters.AddWithValue("Status", entity.Status);
             cmd.Parameters.AddWithValue("Id", entity.UserId);
@@ -108,4 +122,6 @@ public class UserRepository : Repository, IUserRepository
             return DBCommands.CustomNonQuery(cmd, ConnectionString) == 1;
         }
     }
+    
+    
 }
