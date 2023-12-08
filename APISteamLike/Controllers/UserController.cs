@@ -28,10 +28,13 @@ namespace SteamLike.Controllers
         }
 
         // GET: api/User/5
-        [HttpGet("{id}", Name = "Get")]
-        public ActionResult<UserDTO> GetById(int id)
+        [HttpGet]
+        public ActionResult<UserDTO> GetById()
         {
-            UserDTO? user = _userService.Get(id);
+            var claim = User.Claims.Single(x => x.Type == ClaimTypes.NameIdentifier);
+            int userId = Convert.ToInt32(claim.Value);
+            
+            UserDTO? user = _userService.Get(userId);
 
             return user == null ? NotFound() : Ok(user);
         }
@@ -53,10 +56,12 @@ namespace SteamLike.Controllers
         }
 
         // DELETE: api/User/5
-        [HttpDelete("{id}")]
-        public ActionResult<bool> Delete(int id)
+        [HttpDelete]
+        public ActionResult<bool> Delete()
         {
-            return _userService.Delete(id) ? Ok("User deleted") : BadRequest();
+            var claim = User.Claims.Single(x => x.Type == ClaimTypes.NameIdentifier);
+            int userId = Convert.ToInt32(claim.Value);
+            return _userService.Delete(userId) ? Ok("User deleted") : BadRequest();
         }
         
         // PATCH: api/UpdateWallet

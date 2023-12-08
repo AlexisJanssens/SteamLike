@@ -18,13 +18,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>(x =>
-    new UserRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDb")));
+    new UserRepository(builder.Configuration.GetConnectionString("SteamLikeDb")));
 builder.Services.AddScoped<IFriendRepository, FriendRepository>(x =>
-    new FriendRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDB")));
+    new FriendRepository(builder.Configuration.GetConnectionString("SteamLikeDB")));
 builder.Services.AddScoped<IGameRepository, GameRepository>(x=>
-    new GameRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDB")));
+    new GameRepository(builder.Configuration.GetConnectionString("SteamLikeDB")));
 builder.Services.AddScoped<IPriceRepository, PriceRepository>(x=>
-    new PriceRepository(builder.Configuration.GetConnectionString("HomeSteamLikeDB")));
+    new PriceRepository(builder.Configuration.GetConnectionString("SteamLikeDB")));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IFriendService, FriendService>();
 

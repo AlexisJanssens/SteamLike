@@ -1,40 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexi\\RiderProjects\\SteamLike\\BLL\\BLL.csproj": {}
+    "E:\\Labo2\\SteamLike\\SteamLike\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexi\\RiderProjects\\SteamLike\\BLL\\BLL.csproj": {
+    "E:\\Labo2\\SteamLike\\SteamLike\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\BLL\\BLL.csproj",
+        "projectUniqueName": "E:\\Labo2\\SteamLike\\SteamLike\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\BLL\\BLL.csproj",
-        "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\BLL\\obj\\",
+        "projectPath": "E:\\Labo2\\SteamLike\\SteamLike\\BLL\\BLL.csproj",
+        "packagesPath": "C:\\Users\\Alexis\\.nuget\\packages\\",
+        "outputPath": "E:\\Labo2\\SteamLike\\SteamLike\\BLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alexis\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\alexi\\RiderProjects\\SteamLike\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\DAL\\DAL.csproj"
+              "E:\\Labo2\\SteamLike\\SteamLike\\DAL\\DAL.csproj": {
+                "projectPath": "E:\\Labo2\\SteamLike\\SteamLike\\DAL\\DAL.csproj"
               }
             }
           }
@@ -82,41 +75,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\alexi\\RiderProjects\\SteamLike\\DAL\\DAL.csproj": {
+    "E:\\Labo2\\SteamLike\\SteamLike\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\DAL\\DAL.csproj",
+        "projectUniqueName": "E:\\Labo2\\SteamLike\\SteamLike\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\DAL\\obj\\",
+        "projectPath": "E:\\Labo2\\SteamLike\\SteamLike\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\Alexis\\.nuget\\packages\\",
+        "outputPath": "E:\\Labo2\\SteamLike\\SteamLike\\DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alexis\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\alexi\\RiderProjects\\SteamLike\\ToolBox\\ToolBox.csproj": {
-                "projectPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\ToolBox\\ToolBox.csproj"
+              "E:\\Labo2\\SteamLike\\SteamLike\\ToolBox\\ToolBox.csproj": {
+                "projectPath": "E:\\Labo2\\SteamLike\\SteamLike\\ToolBox\\ToolBox.csproj"
               }
             }
           }
@@ -146,33 +132,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\alexi\\RiderProjects\\SteamLike\\ToolBox\\ToolBox.csproj": {
+    "E:\\Labo2\\SteamLike\\SteamLike\\ToolBox\\ToolBox.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\ToolBox\\ToolBox.csproj",
+        "projectUniqueName": "E:\\Labo2\\SteamLike\\SteamLike\\ToolBox\\ToolBox.csproj",
         "projectName": "ToolBox",
-        "projectPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\ToolBox\\ToolBox.csproj",
-        "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexi\\RiderProjects\\SteamLike\\ToolBox\\obj\\",
+        "projectPath": "E:\\Labo2\\SteamLike\\SteamLike\\ToolBox\\ToolBox.csproj",
+        "packagesPath": "C:\\Users\\Alexis\\.nuget\\packages\\",
+        "outputPath": "E:\\Labo2\\SteamLike\\SteamLike\\ToolBox\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alexis\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -212,7 +191,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
         }
       }
     }
